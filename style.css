@@ -1,0 +1,754 @@
+/* =====================================================
+   MY CITY — STYLE.CSS
+===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: #000;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  position: relative;
+}
+
+
+/* =====================================================
+   GAME
+===================================================== */
+
+#game {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#game canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =====================================================
+   HUD
+===================================================== */
+
+#hud {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.hudBox {
+  min-width: 130px;
+  padding: 9px 14px;
+  border-radius: 12px;
+
+  background: rgba(15, 18, 25, 0.78);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+  min-height: 0;
+  max-width: 260px;
+
+  padding: 8px 13px;
+
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  transition: opacity 0.2s ease;
+}
+
+
+/* =====================================================
+   MISSION
+===================================================== */
+
+.missionBox {
+  max-width: 280px;
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+
+  background: rgba(25, 30, 40, 0.82);
+
+  color: #fff;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  border-right: 4px solid #ffd21f;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =====================================================
+   GAME BUTTON
+===================================================== */
+
+.gameButton {
+  position: fixed;
+
+  z-index: 500;
+
+  width: 55px;
+  height: 55px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(20, 24, 30, 0.9);
+
+  color: #fff;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.35);
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease;
+}
+
+.gameButton:active {
+  transform: scale(0.9);
+}
+
+.mapButton {
+  top: 18px;
+  left: 18px;
+}
+
+
+/* =====================================================
+   MAP SCREEN
+===================================================== */
+
+.mapScreen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1500;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background:
+    rgba(0, 0, 0, 0.88);
+
+  padding: 20px;
+}
+
+
+/* =====================================================
+   MAP HEADER
+===================================================== */
+
+.mapHeader {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+
+  color: #fff;
+}
+
+.mapHeader h2 {
+  font-size: 20px;
+}
+
+.mapHeader button {
+  width: 45px;
+  height: 45px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #252932;
+
+  color: #fff;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   MAP
+===================================================== */
+
+#map {
+  position: relative;
+
+  width: min(92vw, 650px);
+
+  height: min(78vh, 650px);
+
+  margin: auto;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4c7544,
+      #638d55
+    );
+
+  border: 3px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =====================================================
+   MAP ROADS
+===================================================== */
+
+.mapRoad {
+  position: absolute;
+
+  background: #33363b;
+
+  opacity: 0.95;
+}
+
+.mapRoad.vertical {
+  width: 16%;
+
+  height: 100%;
+
+  left: 42%;
+  top: 0;
+}
+
+.mapRoad.horizontal {
+  width: 100%;
+
+  height: 16%;
+
+  left: 0;
+  top: 42%;
+}
+
+
+/* =====================================================
+   MAP PLACES
+===================================================== */
+
+.mapPlace {
+  position: absolute;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(255, 255, 255, 0.9);
+
+  font-size: 25px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3);
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* HOME */
+
+.mapPlace.home {
+  left: 22%;
+  top: 25%;
+}
+
+
+/* SCHOOL */
+
+.mapPlace.school {
+  left: 75%;
+  top: 25%;
+}
+
+
+/* MALL */
+
+.mapPlace.mall {
+  left: 76%;
+  top: 75%;
+}
+
+
+/* SHOP */
+
+.mapPlace.shop {
+  left: 23%;
+  top: 75%;
+}
+
+
+/* POLICE */
+
+.mapPlace.police {
+  left: 50%;
+  top: 78%;
+}
+
+
+/* =====================================================
+   MAP PLAYER
+===================================================== */
+
+.mapPlayer {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transform:
+    translate(-50%, -50%);
+
+  font-size: 22px;
+
+  z-index: 20;
+
+  filter:
+    drop-shadow(
+      0 2px 4px rgba(0, 0, 0, 0.5)
+    );
+}
+
+
+/* =====================================================
+   MAP FRIEND
+===================================================== */
+
+.mapFriend {
+  position: absolute;
+
+  left: 54%;
+  top: 50%;
+
+  font-size: 20px;
+
+  z-index: 19;
+}
+
+
+/* =====================================================
+   MOBILE CONTROLS
+===================================================== */
+
+#mobileControls {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 300;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   JOYSTICK
+===================================================== */
+
+.joystick {
+  position: absolute;
+
+  left: 25px;
+  bottom: 30px;
+
+  width: 125px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  border:
+    2px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.25);
+
+  pointer-events: auto;
+
+  touch-action: none;
+}
+
+
+.joystick::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 18px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.joystickStick {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.35);
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTROL BUTTONS
+===================================================== */
+
+.controlButton {
+  position: absolute;
+
+  width: 62px;
+  height: 62px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(20, 24, 30, 0.82);
+
+  color: #fff;
+
+  font-size: 27px;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.35);
+
+  pointer-events: auto;
+
+  touch-action: none;
+}
+
+.controlButton:active {
+  transform: scale(0.9);
+
+  background:
+    rgba(50, 55, 65, 0.95);
+}
+
+
+/* JUMP */
+
+.jumpButton {
+  right: 30px;
+  bottom: 105px;
+}
+
+
+/* SPRINT */
+
+.sprintButton {
+  right: 105px;
+  bottom: 35px;
+}
+
+
+/* =====================================================
+   ONLINE STATUS
+===================================================== */
+
+.onlineStatus {
+  position: fixed;
+
+  top: 85px;
+  right: 18px;
+
+  z-index: 400;
+
+  padding: 7px 12px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(10, 15, 20, 0.75);
+
+  color: #fff;
+
+  font-size: 12px;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+
+/* =====================================================
+   VEHICLE BUTTONS
+===================================================== */
+
+#enterVehicleButton,
+#exitVehicleButton {
+  min-width: 90px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.35);
+}
+
+#enterVehicleButton:active,
+#exitVehicleButton:active {
+  transform: scale(0.92);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (
+  min-width: 900px
+) {
+
+  .joystick {
+    width: 140px;
+    height: 140px;
+
+    left: 35px;
+    bottom: 35px;
+  }
+
+  .joystickStick {
+    width: 62px;
+    height: 62px;
+  }
+
+  .controlButton {
+    width: 70px;
+    height: 70px;
+  }
+
+  .jumpButton {
+    right: 40px;
+    bottom: 125px;
+  }
+
+  .sprintButton {
+    right: 125px;
+    bottom: 40px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (
+  max-width: 380px
+) {
+
+  .joystick {
+    width: 110px;
+    height: 110px;
+
+    left: 18px;
+    bottom: 22px;
+  }
+
+  .joystickStick {
+    width: 48px;
+    height: 48px;
+  }
+
+  .controlButton {
+    width: 55px;
+    height: 55px;
+
+    font-size: 23px;
+  }
+
+  .jumpButton {
+    right: 22px;
+    bottom: 92px;
+  }
+
+  .sprintButton {
+    right: 88px;
+    bottom: 22px;
+  }
+
+  .gameButton {
+    width: 50px;
+    height: 50px;
+
+    font-size: 22px;
+  }
+
+  .mapButton {
+    top: 15px;
+    left: 15px;
+  }
+
+  .hudBox {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .missionBox {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =====================================================
+   HIDE SCROLLBARS
+===================================================== */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =====================================================
+   PREVENT SELECTION
+===================================================== */
+
+button,
+.joystick,
+canvas {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+
+/* =====================================================
+   LANDSCAPE
+===================================================== */
+
+@media (
+  orientation: landscape
+) and (
+  max-height: 500px
+) {
+
+  .joystick {
+    width: 100px;
+    height: 100px;
+
+    bottom: 18px;
+  }
+
+  .jumpButton {
+    bottom: 75px;
+  }
+
+  .sprintButton {
+    bottom: 18px;
+  }
+
+  .missionBox {
+    max-width: 230px;
+    padding: 7px 10px;
+  }
+
+    }
