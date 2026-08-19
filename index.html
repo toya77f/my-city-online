@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
+  <title>MY CITY</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- =================================================
+       GAME
+  ================================================== -->
+
+  <div id="game"></div>
+
+
+  <!-- =================================================
+       START SCREEN
+  ================================================== -->
+
+  <div id="startScreen">
+
+    <div class="startContent">
+
+      <h1>MY CITY</h1>
+
+      <p>Open World Adventure</p>
+
+      <button id="startButton">
+        START GAME
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       HUD
+  ================================================== -->
+
+  <div id="hud">
+
+    <div class="hudBox">
+
+      📍
+      <span id="location">
+        المدينة
+      </span>
+
+    </div>
+
+
+    <div
+      id="stats"
+      class="hudBox"
+    >
+      💰 0 | ⭐ 0
+    </div>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <div
+      id="mission"
+      class="missionBox"
+    ></div>
+
+  </div>
+
+
+  <!-- =================================================
+       MAP BUTTON
+  ================================================== -->
+
+  <button
+    id="mapButton"
+    class="gameButton mapButton"
+  >
+    🗺️
+  </button>
+
+
+  <!-- =================================================
+       MAP SCREEN
+  ================================================== -->
+
+  <div
+    id="mapScreen"
+    class="mapScreen"
+    style="display: none;"
+  >
+
+    <div class="mapHeader">
+
+      <h2>
+        🗺️ خريطة المدينة
+      </h2>
+
+      <button id="closeMap">
+        ✕
+      </button>
+
+    </div>
+
+
+    <div id="map">
+
+      <div class="mapRoad vertical"></div>
+
+      <div class="mapRoad horizontal"></div>
+
+
+      <!-- البيت -->
+
+      <div
+        class="mapPlace home"
+        title="البيت"
+      >
+        🏠
+      </div>
+
+
+      <!-- المدرسة -->
+
+      <div
+        class="mapPlace school"
+        title="المدرسة"
+      >
+        🏫
+      </div>
+
+
+      <!-- المول -->
+
+      <div
+        class="mapPlace mall"
+        title="المول"
+      >
+        🛍️
+      </div>
+
+
+      <!-- المحلات -->
+
+      <div
+        class="mapPlace shop"
+        title="المحلات"
+      >
+        🏪
+      </div>
+
+
+      <!-- الشرطة -->
+
+      <div
+        class="mapPlace police"
+        title="قسم الشرطة"
+      >
+        👮
+      </div>
+
+
+      <!-- اللاعب -->
+
+      <div
+        id="mapPlayer"
+        class="mapPlayer"
+      >
+        🔵
+      </div>
+
+
+      <!-- الصديق -->
+
+      <div
+        id="mapFriend"
+        class="mapFriend"
+      >
+        🟢
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       MOBILE CONTROLS
+  ================================================== -->
+
+  <div id="mobileControls">
+
+
+    <!-- JOYSTICK -->
+
+    <div
+      id="joystick"
+      class="joystick"
+    >
+
+      <div
+        id="joystickStick"
+        class="joystickStick"
+      ></div>
+
+    </div>
+
+
+    <!-- JUMP -->
+
+    <button
+      id="jumpButton"
+      class="controlButton jumpButton"
+    >
+      ⬆️
+    </button>
+
+
+    <!-- SPRINT -->
+
+    <button
+      id="sprintButton"
+      class="controlButton sprintButton"
+    >
+      🏃
+    </button>
+
+  </div>
+
+
+  <!-- =================================================
+       ONLINE STATUS
+  ================================================== -->
+
+  <div
+    id="onlineStatus"
+    class="onlineStatus"
+  >
+    🟢 Offline
+  </div>
+
+
+  <!-- =================================================
+       THREE.JS
+  ================================================== -->
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+
+
+  <!-- =================================================
+       GAME.JS
+  ================================================== -->
+
+  <script
+    type="module"
+    src="game.js"
+  ></script>
+
+
+  <!-- =================================================
+       VEHICLES.JS
+  ================================================== -->
+
+  <script
+    type="module"
+    src="vehicles.js"
+  ></script>
+
+
+</body>
+
+</html>
